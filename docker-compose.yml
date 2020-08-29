@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    image: "mongo:latest"
+  api:
+    depends_on:
+      - db
+    build:
+      dockerfile: dockerfile.dev
+      context: ./
+    image: nikhilkataria19/springdockertest
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_DB_URL:"mongodb://db:27017/test"

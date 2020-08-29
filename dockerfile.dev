@@ -1,0 +1,12 @@
+FROM tomcat:jdk8-adoptopenjdk-openj9
+WORKDIR '/app'
+COPY . .
+EXPOSE 8080
+
+RUN ./gradlew clean build -x test  
+
+COPY ./build/libs/SpringBootRestAuthenticationPractice-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps
+
+CMD ["catalina.sh", "run"]
+#ENTRYPOINT ["java","-war","SpringBootRestAuthenticationPractice-0.0.1-SNAPSHOT.war"]
+#ENTRYPOINT ["java","-war","/SpringBootRestAuthenticationPractice-0.0.1-SNAPSHOT.war"]

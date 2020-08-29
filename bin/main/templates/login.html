@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="">
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+</head>
+<body>
+	<form th:action="@{/login}" method="post" th:object="${user}"
+		enctype="application/x-www-form-urlencoded">
+		<div>
+			<div>
+				<label>Username:</label>
+				<div>
+					<input type="text" th:value="${user.username}" name="username">
+				</div>
+				<br /> <label>Password:</label>
+				<div>
+					<input type="password" th:value="${user.password}" name="password">
+				</div>
+			</div>
+			<br /> <input type="submit" value="submit">
+		</div>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+</body>
+</html>
